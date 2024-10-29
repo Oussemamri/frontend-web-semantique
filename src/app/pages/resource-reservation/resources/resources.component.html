@@ -1,0 +1,26 @@
+<h2>Liste des Ressources</h2>
+
+<!-- Lien vers la page d'ajout de ressource -->
+<a routerLink="/add-resource" class="btn btn-primary mb-3">Ajouter une Ressource</a>
+
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th>Nom</th>
+      <th>Type</th>
+      <th>Quantité</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let resource of resources | slice:-5">
+      <td>{{ resource.resourceName }}</td>
+      <td>{{ resource.resourceType }}</td>
+      <td>{{ resource.resourceQuantity }}</td>
+      <td>
+        <a [routerLink]="['/update-resource', resource.resourceId]" class="btn btn-warning btn-sm">Mettre à jour</a>
+        <button (click)="deleteResource(resource.resourceId)" class="btn btn-danger btn-sm">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

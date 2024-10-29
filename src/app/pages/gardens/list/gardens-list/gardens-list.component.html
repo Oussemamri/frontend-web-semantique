@@ -1,0 +1,65 @@
+<div class="main-content" style="margin-left: auto">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Liste des Bus</h4>
+              <div class="d-flex flex-row justify-content-end">
+                <button
+                  class="btn btn-success text-right"
+                  routerLink="/gardens/add"
+                >
+                  Ajouter un nouveau bus
+                </button>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Marque</th>
+                      <th>Modèle</th>
+                      <th>Immatriculation</th>
+                      <th>Capacité</th>
+                      <th>Horaires Ouverture</th>
+                      <th>Horaires Fermeture</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let bus of buses">
+                      <td>{{ bus.bus_id }}</td>
+                      <td>{{ bus.bus_marque }}</td>
+                      <td>{{ bus.bus_modele }}</td>
+                      <td>{{ bus.bus_immatriculation }}</td>
+                      <td>{{ bus.bus_capacite }}</td>
+                      <td>{{ bus.horairesOuverture }}</td>
+                      <td>{{ bus.horairesFermeture }}</td>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                          <i
+                            class="mdi mdi-pencil mx-2 text-bg-info"
+                            [routerLink]="['/buses/edit', bus.bus_id]"
+                            style="cursor: pointer"
+                          ></i>
+                          <i
+                            class="mdi mdi-delete mx-2 text-bg-danger"
+                            (click)="deleteBus(bus.bus_id)"
+                            style="cursor: pointer"
+                          ></i>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

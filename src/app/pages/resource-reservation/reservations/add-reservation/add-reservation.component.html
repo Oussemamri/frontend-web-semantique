@@ -1,0 +1,19 @@
+<h3>Ajouter une Nouvelle Réservation</h3>
+<form (ngSubmit)="createReservation()" class="needs-validation" novalidate>
+  <div class="mb-3">
+    <label for="reservationId" class="form-label">ID de Réservation:</label>
+    <input type="text" id="reservationId" [(ngModel)]="newReservation.reservationId" name="reservationId" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="dateDebut" class="form-label">Date de Début:</label>
+    <input type="date" id="dateDebut" [(ngModel)]="newReservation.reservationDateDebut" name="dateDebut" class="form-control" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="dateFin" class="form-label">Date de Fin:</label>
+    <input type="date" id="dateFin" [(ngModel)]="newReservation.reservationDateFin" name="dateFin" class="form-control" required>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>

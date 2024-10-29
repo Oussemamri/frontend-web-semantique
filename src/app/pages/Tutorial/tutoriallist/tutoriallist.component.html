@@ -1,0 +1,107 @@
+
+    <!-- Main content -->
+    <div class="main-content" style="margin-left: auto;">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Liste des tutorials</h4>
+                                <button (click)="openAddTutorialModal()" class="btn btn-primary">Add Tutorial</button>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Titre</th>
+                                                <th>Contenu</th>
+                                                <th>Nom Expert </th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let tutorial of tutorials">
+                                                <td>{{ tutorial.tutorialId }}</td>
+                                                <td>{{ tutorial.tutorialTitle }}</td>
+                                                <td>{{ tutorial.tutorialContent}}</td>
+                                                <td>{{ tutorial.authorName }}</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center">
+                                                        <i class="mdi mdi-eye mx-2" style="cursor: pointer;"></i>
+                                                        <i class="mdi mdi-pencil mx-2" (click)="setTutorialToUpdate(tutorial)" style="cursor: pointer;"></i>
+                                                        <i class="mdi mdi-delete mx-2" (click)="deleteTutorial(tutorial.tutorialId)" style="cursor: pointer;"></i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!-- Modal pour l'ajout de tutoriel -->
+<ng-template #addTutorialModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title mt-0">Add Tutorial</h5>
+      <button type="button" class="btn-close" aria-hidden="true" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <label for="tutorialTitle" class="form-label">Title</label>
+          <input type="text" id="tutorialTitle" class="form-control" [(ngModel)]="newTutorial.tutorialTitle" name="tutorialTitle" required>
+        </div>
+        <div class="mb-3">
+          <label for="tutorialContent" class="form-label">Content</label>
+          <textarea id="tutorialContent" class="form-control" [(ngModel)]="newTutorial.tutorialContent" name="tutorialContent" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="authorId" class="form-label">Expert</label>
+          <select id="authorId" class="form-control" [(ngModel)]="newTutorial.authorId" name="authorId" required>
+            <option *ngFor="let expert of experts" [value]="expert.expertId">{{ expert.expertName }}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+      <button class="btn btn-primary" (click)="addTutorial()" [disabled]="!newTutorial.tutorialTitle || !newTutorial.tutorialContent || !newTutorial.authorId">Add Tutorial</button>
+    </div>
+  </ng-template>
+  
+  <!-- Modal pour la mise à jour de tutoriel -->
+  <ng-template #modalTemplate let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title mt-0">Edit Tutorial</h5>
+      <button type="button" class="btn-close" aria-hidden="true" (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <label for="updateTutorialTitle" class="form-label">Title</label>
+          <input type="text" id="updateTutorialTitle" class="form-control" [(ngModel)]="tutorialToUpdate.tutorialTitle" name="updateTutorialTitle" required>
+        </div>
+        <div class="mb-3">
+          <label for="updateTutorialContent" class="form-label">Content</label>
+          <textarea id="updateTutorialContent" class="form-control" [(ngModel)]="tutorialToUpdate.tutorialContent" name="updateTutorialContent" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="updateAuthorId" class="form-label">Expert</label>
+          <select id="updateAuthorId" class="form-control" [(ngModel)]="tutorialToUpdate.authorId" name="updateAuthorId" required>
+            <option *ngFor="let expert of experts" [value]="expert.expertId">{{ expert.expertName }}</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+      <button class="btn btn-primary" (click)="updateTutorial()" [disabled]="!tutorialToUpdate.tutorialTitle || !tutorialToUpdate.tutorialContent || !tutorialToUpdate.authorId">Save changes</button>
+    </div>
+  </ng-template>
+  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

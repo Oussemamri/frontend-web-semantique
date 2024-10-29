@@ -1,0 +1,48 @@
+<div class="update-sponsor-container">
+    <h2>Modifier le Sponsor</h2>
+    
+    <form [formGroup]="sponsorForm" (ngSubmit)="updateSponsor()">
+      <div class="form-group">
+        <label for="sponsor_name">Nom du Sponsor</label>
+        <input 
+          id="sponsor_name" 
+          formControlName="sponsor_name" 
+          type="text" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': sponsorForm.get('sponsor_name')?.invalid && (sponsorForm.get('sponsor_name')?.touched || sponsorForm.get('sponsor_name')?.dirty)}"
+        />
+        <div *ngIf="sponsorForm.get('sponsor_name')?.invalid && (sponsorForm.get('sponsor_name')?.touched || sponsorForm.get('sponsor_name')?.dirty)" class="invalid-feedback">
+          Veuillez entrer un nom valide.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="sponsor_type">Type de Sponsor</label>
+        <input 
+          id="sponsor_type" 
+          formControlName="sponsor_type" 
+          type="text" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': sponsorForm.get('sponsor_type')?.invalid && (sponsorForm.get('sponsor_type')?.touched || sponsorForm.get('sponsor_type')?.dirty)}"
+        />
+        <div *ngIf="sponsorForm.get('sponsor_type')?.invalid && (sponsorForm.get('sponsor_type')?.touched || sponsorForm.get('sponsor_type')?.dirty)" class="invalid-feedback">
+          Veuillez entrer un type valide.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="sponsor_contact_info">Informations de Contact du Sponsor</label>
+        <textarea 
+          id="sponsor_contact_info" 
+          formControlName="sponsor_contact_info" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': sponsorForm.get('sponsor_contact_info')?.invalid && (sponsorForm.get('sponsor_contact_info')?.touched || sponsorForm.get('sponsor_contact_info')?.dirty)}"
+        ></textarea>
+        <div *ngIf="sponsorForm.get('sponsor_contact_info')?.invalid && (sponsorForm.get('sponsor_contact_info')?.touched || sponsorForm.get('sponsor_contact_info')?.dirty)" class="invalid-feedback">
+          Veuillez entrer des informations de contact valides.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="sponsorForm.invalid">Mettre à Jour le Sponsor</button>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+<!-- src/app/list-sponsors/list-sponsors.component.html -->
+<div *ngIf="sponsors.length > 0; else noSponsors" class="event-list-container">
+    <h2>Liste des Sponsors</h2>
+    
+    <!-- Table Structure -->
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Type</th>
+          <th>Informations de Contact</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sponsor of sponsors">
+          <td>{{ sponsor.sponsor_name }}</td>
+          <td>{{ sponsor.sponsor_type }}</td>
+          <td>{{ sponsor.sponsor_contact_info }}</td>
+          <td>
+            <a [routerLink]="['/sponsors/update', sponsor.sponsor_id]" class="edit-button">Modifier</a>
+            <button class="delete-button" (click)="deleteSponsor(sponsor.sponsor_id)">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <ng-template #noSponsors>
+    <p>Aucun sponsor trouvé.</p>
+  </ng-template>
+  
+  <button class="add-event-button" [routerLink]="['/sponsors/add']">Ajouter un nouveau sponsor</button>
+  

@@ -1,0 +1,35 @@
+<div class="add-expert-container">
+    <h2>Ajouter un Expert</h2>
+    <form (ngSubmit)="addExpert()" #expertForm="ngForm">
+      <label for="expert_name">Nom de l'expert</label>
+      <input
+        type="text"
+        id="expert_name"
+        [(ngModel)]="newExpert.expert_name"
+        name="expert_name"
+        required
+      />
+  
+      <label for="expert_bio">Bio</label>
+      <textarea
+        id="expert_bio"
+        [(ngModel)]="newExpert.expert_bio"
+        name="expert_bio"
+        required
+      ></textarea>
+  
+      <label for="expert_contact_info">Contact</label>
+      <input
+        type="email"
+        id="expert_contact_info"
+        [(ngModel)]="newExpert.expert_contact_info"
+        name="expert_contact_info"
+        required
+      />
+  
+      <button type="submit" class="primary-btn" [disabled]="!expertForm.valid">
+        Ajouter
+      </button>
+    </form>
+  </div>
+  

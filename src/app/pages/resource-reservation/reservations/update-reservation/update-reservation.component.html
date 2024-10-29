@@ -1,0 +1,25 @@
+<form [formGroup]="reservationForm" (ngSubmit)="updateReservation()" class="needs-validation" novalidate>
+    <div class="mb-3">
+      <label for="reservationDateDebut" class="form-label">Date de début :</label>
+      <input id="reservationDateDebut" formControlName="reservationDateDebut" type="date" class="form-control" required>
+      <div *ngIf="reservationForm.get('reservationDateDebut')?.invalid && reservationForm.get('reservationDateDebut')?.touched" class="text-danger">
+        La date de début est requise.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="reservationDateFin" class="form-label">Date de fin :</label>
+      <input id="reservationDateFin" formControlName="reservationDateFin" type="date" class="form-control" required>
+      <div *ngIf="reservationForm.get('reservationDateFin')?.invalid && reservationForm.get('reservationDateFin')?.touched" class="text-danger">
+        La date de fin est requise.
+      </div>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Mettre à jour la réservation</button>
+  
+    <!-- Affichage du message -->
+    <div *ngIf="message" class="alert alert-info mt-3">
+      {{ message }}
+    </div>
+  </form>
+  

@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-between mb-3">
+    <h4>Posts</h4>
+    <button (click)="openAddPostModal()" class="btn btn-primary">Add Post</button>
+  </div>
+  
+  <div class="table-responsive mb-0">
+    <table class="table table-centered table-nowrap">
+      <thead class="table-light">
+        <tr>
+          <th style="width: 20px;">
+            <div class="form-check font-size-16 align-middle">
+              <input class="form-check-input" type="checkbox" id="postCheck01">
+              <label class="form-check-label" for="postCheck01"></label>
+            </div>
+          </th>
+          <th class="align-middle">Post Title</th>
+          <th class="align-middle">Post Content</th>
+          <th class="align-middle">Created At</th>
+          <th class="align-middle">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts">
+          <td>
+            <div class="form-check font-size-16">
+              <input class="form-check-input" type="checkbox" id="postCheck{{post.postId}}">
+              <label class="form-check-label" for="postCheck{{post.postId}}"></label>
+            </div>
+          </td>
+          <td>{{ post.postTitle }}</td>
+          <td>{{ post.postContent }}</td>
+          <td>{{ post.postCreatedAt }}</td>
+          <td>
+            <button (click)="deletePost(post.postId)" class="btn btn-danger btn-sm" style="margin-right: 5px;">Delete</button>
+            <button (click)="setPostToUpdate(post)" class="btn btn-warning btn-sm">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <ng-template #modalTemplate let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title mt-0">Edit Post</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="postTitle" class="form-label">Title</label>
+            <input type="text" id="postTitle" class="form-control" [(ngModel)]="postToUpdate.postTitle" name="postTitle" required>
+          </div>
+          <div class="mb-3">
+            <label for="postContent" class="form-label">Content</label>
+            <textarea id="postContent" class="form-control" [(ngModel)]="postToUpdate.postContent" name="postContent" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+        <button class="btn btn-primary" (click)="updatePost()" [disabled]="!postToUpdate.postTitle || !postToUpdate.postContent">Save changes</button>
+      </div>
+    </ng-template>
+  
+    <ng-template #addPostModal let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title mt-0">Add Post</h5>
+        <button type="button" class="btn-close" aria-hidden="true" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="newPostTitle" class="form-label">Title</label>
+            <input type="text" id="newPostTitle" class="form-control" [(ngModel)]="newPost.postTitle" name="newPostTitle" required>
+          </div>
+          <div class="mb-3">
+            <label for="newPostContent" class="form-label">Content</label>
+            <textarea id="newPostContent" class="form-control" [(ngModel)]="newPost.postContent" name="newPostContent" required></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+        <button class="btn btn-primary" (click)="addPost()" [disabled]="!newPost.postTitle || !newPost.postContent">Add Post</button>
+      </div>
+    </ng-template>
+    
+  </div>
+  

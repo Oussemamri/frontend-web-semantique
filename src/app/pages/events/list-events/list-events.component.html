@@ -1,0 +1,38 @@
+<!-- src/app/list-events/list-events.component.html -->
+<div *ngIf="events.length > 0; else noEvents" class="event-list-container">
+  <h2>Event List</h2>
+  
+  <!-- Table Structure -->
+  <table class="event-table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Date</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.event_title }}</td>
+        <td>{{ event.event_description }}</td>
+        <td>{{ event.event_date }}</td>
+        <td>{{ event.event_location }}</td>
+        <td>
+            <a [routerLink]="['/events/update', event.event_id]" class="edit-button">Edit</a>
+          <button class="delete-button" (click)="deleteEvent(event.event_id)">Delete</button> 
+<!--  (click)="editEvent(event)" -->
+ <!--  (click)="deleteEvent(event.eventId)" -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noEvents>
+  <p>No events found.</p>
+</ng-template>
+
+
+<button class="add-event-button" [routerLink]="['/events/add']">Ajouter un nouvel événement</button>

@@ -1,0 +1,45 @@
+<h2>Liste des Réservations</h2>
+
+<!-- Lien pour naviguer vers le formulaire d'ajout de réservation -->
+<a routerLink="/add-reservation" class="add-reservation-link">
+  Ajouter une Réservation
+</a>
+
+<div class="card-body">
+  <h4 class="card-title mb-4">Liste des Réservations</h4>
+  <div class="table-responsive mb-0">
+    <table class="table table-centered table-nowrap">
+      <thead class="table-light">
+        <tr>
+          <th style="width: 20px;">
+            <div class="form-check font-size-16 align-middle">
+              <input type="checkbox" id="reservationCheckAll" class="form-check-input">
+              <label for="reservationCheckAll" class="form-check-label"></label>
+            </div>
+          </th>
+          <th class="align-middle">ID de Réservation</th>
+          <th class="align-middle">Date de Début</th>
+          <th class="align-middle">Date de Fin</th>
+          <th class="align-middle">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of reservations">
+          <td>
+            <div class="form-check font-size-16">
+              <input type="checkbox" class="form-check-input" id="reservationCheck{{reservation.reservationId}}">
+              <label class="form-check-label" for="reservationCheck{{reservation.reservationId}}"></label>
+            </div>
+          </td>
+          <td><a href="javascript:void(0);" class="text-body fw-bold">{{ reservation.reservationId }}</a></td>
+          <td>{{ reservation.reservationDateDebut | date:'short' }}</td>
+          <td>{{ reservation.reservationDateFin | date:'short' }}</td>
+          <td>
+            <button (click)="goToUpdateReservation(reservation.reservationId)" class="btn btn-primary btn-sm btn-rounded">Mettre à jour</button>
+            <button (click)="deleteReservation(reservation.reservationId)" class="btn btn-danger btn-sm btn-rounded">Supprimer</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

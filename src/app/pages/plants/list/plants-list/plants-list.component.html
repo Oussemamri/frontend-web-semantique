@@ -1,0 +1,71 @@
+<!-- Main content -->
+<div class="main-content" style="margin-left: auto">
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Add Plant Button -->
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Liste des Plantes</h4>
+              <div class="d-flex flex-row justify-content-end">
+                <button
+                  class="btn btn-success mb-3 text-right"
+                  routerLink="/plants/add"
+                >
+                  Ajouter une nouvelle plante
+                </button>
+              </div>
+
+              <!-- Search Bar -->
+              <div class="mb-3">
+                <input
+                  type="text"
+                  [(ngModel)]="searchTerm"
+                  placeholder="Rechercher par nom ou par saison"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nom</th>
+                      <th>Saison</th>
+                      <th>Date culture</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let plant of plants | filter : searchTerm">
+                      <td>{{ plant.plant_id }}</td>
+                      <td>{{ plant.plant_name }}</td>
+                      <td>{{ plant.planting_season }}</td>
+                      <td>{{ plant.harvest_time }}</td>
+                      <td>
+                        <div class="d-flex justify-content-center">
+                          <i
+                            class="mdi mdi-pencil mx-2 text-bg-info"
+                            [routerLink]="['/plants/edit', plant.plant_id]"
+                            style="cursor: pointer"
+                          ></i>
+                          <i
+                            class="mdi mdi-delete mx-2 text-bg-danger"
+                            (click)="deletePlant(plant.plant_id)"
+                            style="cursor: pointer"
+                          ></i>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<h2>Modifier la Ressource</h2>
+
+<form (ngSubmit)="onSubmit()" #resourceForm="ngForm">
+  <div class="form-group">
+    <label for="resourceName">Nom de la ressource</label>
+    <input type="text" id="resourceName" [(ngModel)]="resource.resourceName" name="resourceName" required class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="resourceType">Type de la ressource</label>
+    <input type="text" id="resourceType" [(ngModel)]="resource.resourceType" name="resourceType" required class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="resourceQuantity">Quantité</label>
+    <input type="number" id="resourceQuantity" [(ngModel)]="resource.resourceQuantity" name="resourceQuantity" required class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Mettre à jour la ressource</button>
+</form>

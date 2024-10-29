@@ -1,0 +1,20 @@
+<!-- src/app/add-sponsor/add-sponsor.component.html -->
+<div class="add-event-form">
+    <h2>Ajouter un nouveau sponsor</h2>
+    <form (ngSubmit)="addSponsor()">
+      <div>
+        <label for="name">Nom du sponsor:</label>
+        <input type="text" id="name" [(ngModel)]="newSponsor.sponsor_name" name="name" required>
+      </div>
+      <div>
+        <label for="type">Type de sponsor:</label>
+        <input type="text" id="type" [(ngModel)]="newSponsor.sponsor_type" name="type" required>
+      </div>
+      <div>
+        <label for="contactInfo">Informations de contact:</label>
+        <textarea id="contactInfo" [(ngModel)]="newSponsor.sponsor_contact_info" name="contactInfo" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-success">Ajouter le sponsor</button>
+    </form>
+  </div>
+  

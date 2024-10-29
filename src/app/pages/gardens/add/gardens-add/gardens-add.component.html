@@ -1,0 +1,90 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Ajouter un Bus</h2>
+          <form [formGroup]="busForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="id">ID</label>
+              <input
+                id="id"
+                type="text"
+                class="form-control"
+                formControlName="id"
+              />
+            </div>
+            <div class="form-group">
+              <label for="marque">Marque</label>
+              <input
+                type="text"
+                class="form-control"
+                id="marque"
+                formControlName="marque"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="modele">Modèle</label>
+              <input
+                type="text"
+                class="form-control"
+                id="modele"
+                formControlName="modele"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="immatriculation">Immatriculation</label>
+              <input
+                type="text"
+                class="form-control"
+                id="immatriculation"
+                formControlName="immatriculation"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="capacite">Capacité</label>
+              <input
+                type="number"
+                class="form-control"
+                id="capacite"
+                formControlName="capacite"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="horairesOuverture">Horaires Ouverture</label>
+              <input
+                type="text"
+                class="form-control"
+                id="horairesOuverture"
+                formControlName="horairesOuverture"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="horairesFermeture">Horaires Fermeture</label>
+              <input
+                type="text"
+                class="form-control"
+                id="horairesFermeture"
+                formControlName="horairesFermeture"
+              />
+            </div>
+
+            <div class="d-flex flex-row justify-content-lg-between mt-3">
+              <button class="btn btn-secondary" [routerLink]="['/buses']">
+                Retourner
+              </button>
+              <button type="submit" class="btn btn-success" [disabled]="busForm.invalid">
+                Ajouter
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

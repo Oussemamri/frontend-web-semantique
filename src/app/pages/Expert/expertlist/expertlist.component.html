@@ -1,0 +1,102 @@
+<div class="main-content" style="margin-left: auto;">
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Liste des Experts</h4>
+                <button (click)="openAddExpertModal()" class="btn btn-primary">Add Expert</button>
+  
+                <div class="table-responsive">
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Bio</th>
+                        <th>Contact</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let expert of experts">
+                        <td>{{ expert.expertId }}</td>
+                        <td>{{ expert.expertName }}</td>
+                        <td>{{ expert.expertBio }}</td>
+                        <td>{{ expert.expertContactInfo }}</td>
+                        <td>
+                          <div class="d-flex justify-content-center">
+                            <i class="mdi mdi-eye mx-2" style="cursor: pointer;"></i>
+                            <i class="mdi mdi-pencil mx-2" (click)="setExpertToUpdate(expert)" style="cursor: pointer;"></i>
+                            <i class="mdi mdi-delete mx-2" (click)="deleteExpert(expert.expertId)" style="cursor: pointer;"></i>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+  
+                  <!-- Modal de mise à jour -->
+                  <ng-template #modalTemplate let-modal>
+                    <div class="modal-header">
+                      <h5 class="modal-title mt-0">Edit Expert</h5>
+                      <button type="button" class="btn-close" aria-hidden="true" (click)="closeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="expertName" class="form-label">Name</label>
+                          <input type="text" id="expertName" class="form-control" [(ngModel)]="expertToUpdate.expertName" name="expertName" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="expertBio" class="form-label">Bio</label>
+                          <textarea id="expertBio" class="form-control" [(ngModel)]="expertToUpdate.expertBio" name="expertBio" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                          <label for="expertContactInfo" class="form-label">Contact Info</label>
+                          <input type="email" id="expertContactInfo" class="form-control" [(ngModel)]="expertToUpdate.expertContactInfo" name="expertContactInfo" required>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+                      <button class="btn btn-primary" (click)="updateExpert()" [disabled]="!expertToUpdate.expertName || !expertToUpdate.expertBio || !expertToUpdate.expertContactInfo">Save changes</button>
+                    </div>
+                  </ng-template>
+  
+                  <!-- Modal pour l'ajout -->
+                  <ng-template #addExpertModal let-modal>
+                    <div class="modal-header">
+                      <h5 class="modal-title mt-0">Add Expert</h5>
+                      <button type="button" class="btn-close" aria-hidden="true" (click)="closeModal()"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="mb-3">
+                          <label for="newExpertName" class="form-label">Name</label>
+                          <input type="text" id="newExpertName" class="form-control" [(ngModel)]="newExpert.expertName" name="newExpertName" required>
+                        </div>
+                        <div class="mb-3">
+                          <label for="newExpertBio" class="form-label">Bio</label>
+                          <textarea id="newExpertBio" class="form-control" [(ngModel)]="newExpert.expertBio" name="newExpertBio" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                          <label for="newExpertContactInfo" class="form-label">Contact Info</label>
+                          <input type="email" id="newExpertContactInfo" class="form-control" [(ngModel)]="newExpert.expertContactInfo" name="newExpertContactInfo" required>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+                      <button class="btn btn-primary" (click)="addExpert()" [disabled]="!newExpert.expertName || !newExpert.expertBio || !newExpert.expertContactInfo">Add Expert</button>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

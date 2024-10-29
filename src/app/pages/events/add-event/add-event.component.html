@@ -1,0 +1,28 @@
+<!-- src/app/add-event/add-event.component.html -->
+<div class="add-event-form">
+    <h2>Ajouter un nouvel événement</h2>
+    <form (ngSubmit)="addEvent()">
+      <div>
+        <label for="title">Titre:</label>
+        <input type="text" id="title" [(ngModel)]="newEvent.event_title" name="title" required>
+      </div>
+      <div>
+        <label for="description">Description:</label>
+        <textarea id="description" [(ngModel)]="newEvent.event_description" name="description" required></textarea>
+      </div>
+      <div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" [(ngModel)]="newEvent.event_date" name="date" required>
+      </div>
+      <div>
+        <label for="time">Heure:</label>
+        <input type="time" id="time" [(ngModel)]="newEvent.event_time" name="time" required>
+      </div>
+      <div>
+        <label for="location">Lieu:</label>
+        <input type="text" id="location" [(ngModel)]="newEvent.event_location" name="location" required>
+      </div>
+      <button type="submit">Ajouter l'événement</button>
+    </form>
+  </div>
+  

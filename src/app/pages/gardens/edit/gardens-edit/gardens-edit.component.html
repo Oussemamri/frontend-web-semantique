@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Modifier le Jardin</h2>
+          <form [formGroup]="gardenForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="garden_name">Nom</label>
+              <input
+                type="text"
+                class="form-control"
+                id="garden_name"
+                formControlName="garden_name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="garden_size">Capacité</label>
+              <input
+                type="number"
+                class="form-control"
+                id="garden_size"
+                formControlName="garden_size"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="garden_location">Localisation</label>
+              <input
+                type="text"
+                class="form-control"
+                id="garden_location"
+                formControlName="garden_location"
+              />
+            </div>
+            <div class="form-group">
+              <label for="garden_created_at">Date ajout</label>
+              <input
+                type="date"
+                class="form-control"
+                id="garden_created_at"
+                formControlName="garden_created_at"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="plant_id">ID Plante</label>
+              <input
+                type="text"
+                class="form-control"
+                id="plant_id"
+                formControlName="plant_id"
+              />
+            </div>
+
+            <div class="d-flex flex-row justify-content-lg-between mt-3">
+              <button class="btn btn-secondary" [routerLink]="['/gardens']">
+                Retourner
+              </button>
+              <button type="submit" class="btn btn-primary">Modifier</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,71 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Ajouter une Plante</h2>
+          <form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label for="plant_id">ID</label>
+              <input
+                id="plant_id"
+                type="text"
+                class="form-control"
+                formControlName="plant_id"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="plant_garden_id">Garden ID</label>
+              <input
+                id="plant_garden_id"
+                type="text"
+                class="form-control"
+                formControlName="plant_garden_id"
+              />
+            </div>
+            <div class="form-group">
+              <label for="plant_name">Nom</label>
+              <input
+                id="plant_name"
+                type="text"
+                class="form-control"
+                formControlName="plant_name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="planting_season">Saison</label>
+              <select
+                id="planting_season"
+                class="form-control"
+                formControlName="planting_season"
+              >
+                <option *ngFor="let season of seasons" [value]="season">
+                  {{ season }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="harvest_time">Date culture</label>
+              <input
+                id="harvest_time"
+                type="date"
+                class="form-control"
+                formControlName="harvest_time"
+              />
+            </div>
+
+            <div class="d-flex flex-row justify-content-lg-between mt-3">
+              <button class="btn btn-secondary" [routerLink]="['/plants']">
+                Retourner
+              </button>
+              <button type="submit" class="btn btn-success">Ajouter</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

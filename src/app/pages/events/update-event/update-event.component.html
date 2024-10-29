@@ -1,0 +1,77 @@
+<div class="update-event-container">
+    <h2>Modifier l'Événement</h2>
+    
+    <form [formGroup]="eventForm" (ngSubmit)="updateEvent()">
+      <div class="form-group">
+        <label for="event_title">Titre de l'Événement</label>
+        <input 
+          id="event_title" 
+          formControlName="event_title" 
+          type="text" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': eventForm.get('event_title')?.invalid && (eventForm.get('event_title')?.touched || eventForm.get('event_title')?.dirty)}"
+        />
+        <div *ngIf="eventForm.get('event_title')?.invalid && (eventForm.get('event_title')?.touched || eventForm.get('event_title')?.dirty)" class="invalid-feedback">
+          Veuillez entrer un titre valide.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="event_description">Description de l'Événement</label>
+        <textarea 
+          id="event_description" 
+          formControlName="event_description" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': eventForm.get('event_description')?.invalid && (eventForm.get('event_description')?.touched || eventForm.get('event_description')?.dirty)}"
+        ></textarea>
+        <div *ngIf="eventForm.get('event_description')?.invalid && (eventForm.get('event_description')?.touched || eventForm.get('event_description')?.dirty)" class="invalid-feedback">
+          Veuillez entrer une description valide.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="event_location">Lieu de l'Événement</label>
+        <input 
+          id="event_location" 
+          formControlName="event_location" 
+          type="text" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': eventForm.get('event_location')?.invalid && (eventForm.get('event_location')?.touched || eventForm.get('event_location')?.dirty)}"
+        />
+        <div *ngIf="eventForm.get('event_location')?.invalid && (eventForm.get('event_location')?.touched || eventForm.get('event_location')?.dirty)" class="invalid-feedback">
+          Veuillez entrer un lieu valide.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="event_time">Heure de l'Événement</label>
+        <input 
+          id="event_time" 
+          formControlName="event_time" 
+          type="time" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': eventForm.get('event_time')?.invalid && (eventForm.get('event_time')?.touched || eventForm.get('event_time')?.dirty)}"
+        />
+        <div *ngIf="eventForm.get('event_time')?.invalid && (eventForm.get('event_time')?.touched || eventForm.get('event_time')?.dirty)" class="invalid-feedback">
+          Veuillez entrer une heure valide.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="event_date">Date de l'Événement</label>
+        <input 
+          id="event_date" 
+          formControlName="event_date" 
+          type="date" 
+          class="form-control" 
+          [ngClass]="{'is-invalid': eventForm.get('event_date')?.invalid && (eventForm.get('event_date')?.touched || eventForm.get('event_date')?.dirty)}"
+        />
+        <div *ngIf="eventForm.get('event_date')?.invalid && (eventForm.get('event_date')?.touched || eventForm.get('event_date')?.dirty)" class="invalid-feedback">
+          Veuillez entrer une date valide.
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="eventForm.invalid">Mettre à Jour l'Événement</button>
+    </form>
+  </div>
+  
